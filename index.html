@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+  <title>OakInk Dataset CVPR2022 | 手物交互数据库</title>
+
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta property="og:image" content="./img/teaser.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dart2022.github.io/" />
+  <meta property="og:title" content="DART: Articulated Hand Model with Diverse Accessories and Rich
+      Textures (NeurIPS 2022)" />
+  <meta property="og:description" content="We extend MANO with more Diverse Accessories and Rich Textures,
+      namely DART. DART is comprised of 325 exquisite hand-crafted texture maps
+      which vary in appearance and cover different kinds of blemishes, make-ups,
+      and accessories. We also generate large-scale (800K), diverse, and
+      high-fidelity hand images, paired with perfect-aligned 3D labels, called
+      DARTset." />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DART: Articulated Hand Model with Diverse Accessories and Rich
+      Textures (NeurIPS 2022)" />
+  <meta name="twitter:description" content="We extend MANO with more Diverse Accessories and Rich Textures,
+      namely DART. DART is comprised of 325 exquisite hand-crafted texture maps
+      which vary in appearance and cover different kinds of blemishes, make-ups,
+      and accessories. We also generate large-scale (800K), diverse, and
+      high-fidelity hand images, paired with perfect-aligned 3D labels, called
+      DARTset." />
+  <meta name="twitter:image" content="./img/teaser.png" />
+
+  <!-- mirror: F0%9F%AA%9E&lt -->
+  <!-- <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22
+      viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22
+      font-size=%2290%22&gt;%E2%9C%A8&lt;/text&gt;&lt;/svg&gt;" /> -->
+  <link rel="icon" type="image/png" href="img/oakink_icon.png">
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css" />
+  <link rel="stylesheet" href="css/codemirror.min.css" />
+  <link rel="stylesheet" href="css/app.css" />
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/codemirror.min.js"></script>
+  <script src="js/clipboard.min.js"></script>
+  <script src="js/video_comparison.js"></script>
+  <script src="js/app.js"></script>
+</head>
+
+<body>
+  <div class="container" id="header" style="text-align: center; margin: auto">
+    <div class="row" id="title-row" style="max-width: 100%; margin: 0 auto; display: inline-block">
+      <br />
+      <h2 class="post-title">
+        <img class="left" src="img/oakinklogo.png" width="240px" height="auto" alt="OakInk_logo.png">
+      </h2>
+      <h2 class="col-md-12 text-center" id="title">
+        OakInk: A Large-scale Knowledge Repository for <br />
+        Understanding Hand-Object Interaction<br />
+
+        <small> Computer Vision and Pattern Recognition (CVPR) 2022 </small>
+        <br>
+      </h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 text-center">
+        <a style="text-decoration: none;" href="https://lixiny.github.io">Lixin Yang <sup>1,2 &#9733</sup></a>
+        &nbsp;&nbsp;
+        <a style="text-decoration: none" href="https://kailinli.top/">Kailin Li <sup>1,&#9733</sup></a>
+        &nbsp;&nbsp;
+        <a style="text-decoration: none" href="#">Xinyu Zhan<sup>1,&#9733</sup></a>
+        &nbsp;&nbsp;
+        <a style="text-decoration: none"> Fei Wu<sup>1</sup> </a>
+        &nbsp;&nbsp;
+        <a style="text-decoration: none" href="https://anran-xu.github.io"> Anran Xu<sup>1</sup> </a>
+        &nbsp;&nbsp;
+        <a style="text-decoration: none" href="https://scholar.google.com/citations?user=-_aPWUIAAAAJ&hl=en"> Liu
+          Liu<sup>1</sup> </a>
+        &nbsp;&nbsp;
+        <a style="text-decoration: none" href="https://www.mvig.org"> Cewu Lu <sup>1,2,<b>&#9742</b></sup> </a>
+        </br>
+        <sup>1 </sup>Shanghai Jiao Tong University &nbsp;&nbsp; <sup>2 </sup>Shanghai Qi Zhi Institute
+        </br>
+        <sup>&#9733</sup> Equal contribution &nbsp;&nbsp; <sup>&#9742</sup> Corresponding author
+
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <br />
+  <script>
+    document.getElementById("author-row").style.maxWidth =
+      document.getElementById("title-row").clientWidth + "px";
+  </script>
+  <div class="container" id="main">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 text-center">
+        <ul class="nav nav-pills nav-justified">
+          <li>
+            <a href="https://arxiv.org/abs/2203.15709">
+              <img src="./img/paper_image.png" height="60px" />
+              <h4><strong>Paper</strong></h4>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/embed/vNTdeXlLdU8">
+              <img src="./img/youtube_icon.png" height="60px" />
+              <h4><strong>Video</strong></h4>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/lixiny/OakInk" target="_blank">
+              <img src="img/github.png" height="60px" />
+              <h4><b>Toolkit</b></h4>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/KailinLi/Tink" target="_blank">
+              <img src="img/github.png" height="60px" />
+              <h4><strong>Tink</strong></h4>
+            </a>
+          </li>
+          <li>
+            <a href="https://forms.gle/g6QEmmCeZYLGaVe29" target="_blank">
+              <img src="img/database_icon.png" height="60px" />
+              <h4><strong>Dataset</strong></h4>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 text-justify">
+        <h2>Update</h2>
+        <ul>
+          <li>
+            <b><tt>Oct,18,2022</tt></b>: &nbsp <b>OakInk public v2.1 -- a new version of OakInk-Image's annotation is
+              released! </b>
+            <br />Within this update:
+            <b>1).</b> Several artifacts have been fixed, including: a). wrong poses of hand and objects; b). time
+            delay; c). contact surface mismatches;
+            <b>2).</b> A "release" tag of hand-over sequence is added to the annotation.
+            <br />
+              <a><b>NOTE</b></a>: &nbsp;
+              If you downloaded the OakInk dataset before <u>11:00 AM October 18, 2022, UTC</u>,
+              You <b>only</b> need to replace the previous anno.zip (3.4G) by this newly released: <a
+                href="https://forms.gle/g6QEmmCeZYLGaVe29" target="_blank"><span class="icon"> <i
+                    class="fas fa-download"></i>
+                </span>anno_v2.1.zip</a> <i style="color:gray;">(3.6G)</i>,
+              unzip it and keep the same file structures as before, and don't forget to download and install the latest
+              <a href="https://github.com/lixiny/OakInk"> <b>OakInk Toolkit</b></a>.
+          </li>
+          <br>
+          <li>
+            <b><tt>Jul,26,2022</tt></b>: &nbsp <a href="https://github.com/KailinLi/Tink"> <strong>Tink
+              </strong></a> has been made public.
+          </li>
+          <!-- <li><a href="https://www.dropbox.com/s/bxq7ndmzq8nh41z/oakink_image_v2.zip?dl=0"
+            target="_blank"><span class="icon"> <i class="fas fa-download"></i>
+            </span>oakink_image_v2.zip</a> <i style="color:gray;">(10G)</i></li>
+          <li> -->
+          <li>
+            <b><tt>Jun,28,2022</tt></b>: &nbsp OakInk <b>public v2</b> has been released.<br />
+            <a href="https://github.com/lixiny/OakInk"> <b>OakInk Toolkit</b></a> -- a Python package that provides data
+            loading, has been released.
+          </li>
+          <li>
+            <b><tt>Mar,03,2022</tt></b>: &nbsp <img class="emoji" title=":sparkles:" alt=":sparkles:"
+              src="https://github.githubassets.com/images/icons/emoji/unicode/2728.png" height="20" width="20"> OakInk
+            got accepted by <a href="https://cvpr2022.thecvf.com"><strong>CVPR 2022</strong></a>.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h2>Abstract</h2>
+        <div class="text-justify">
+          Learning how humans manipulate objects requires machines to acquire knowledge from two perspectives: one
+          for understanding object affordances and the other for learning human's interactions based on the
+          affordances. Even though these two knowledge bases are crucial, we find that current databases lack a
+          comprehensive awareness of them.
+          In this work, we propose a multi-modal and rich-annotated knowledge
+          repository, <b>OakInk</b>, for visual and cognitive understanding of
+          hand-object interactions.
+          We start to collect 1,800 common household objects and annotate their affordances to construct the first
+          knowledge base: <b>Oak</b>.
+          Given the affordance, we record rich human interactions with 100 selected objects in <b>Oak</b>.
+          Finally, we transfer the interactions on the 100 recorded objects to their virtual counterparts through a
+          novel method: <b><i>Tink</i></b>.
+          The recorded and transferred hand-object interactions constitute the second knowledge base: <b>Ink</b>.
+          As a result, <b>OakInk</b> contains 50,000 distinct affordance-aware and
+          intent-oriented hand-object
+          interactions. We benchmark OakInk on pose estimation and grasp generation tasks.
+          Moreover, we propose two practical applications of OakInk:
+          intent-based interaction generation and handover generation.<br /><br />
+        </div>
+      </div>
+
+      <img src="img/teaser.png" class="img-responsive" alt="overview" width="64%"
+        style="max-height: 450px; margin: 30px auto" />
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h2>Download</h2>
+        For researchers in China, you can download <b>OakInk</b> from the following mirror:  <br>
+        来自中国的研究者们可以使用镜像链接:
+        <a href="https://pan.baidu.com/s/1H2hW1ZXEbNccOUzYX9cPkA" target="_blank"><span
+          class="icon"> <i class="fas fa-download"></i>
+        </span>百度云盘</a>   (<code>hrt9</code>)
+        下载数据集。
+
+
+        <div class="text-justify">
+          <h3><b>OakInk-Image</b> -- Image-based subset</h3>
+          <ul>
+            <li>Download the image sequences. We divided the image data into 11 parts (10G each).</li>
+            <ul>
+              <li><a href="https://www.dropbox.com/s/bxq7ndmzq8nh41z/oakink_image_v2.zip?dl=0" target="_blank"><span
+                    class="icon"> <i class="fas fa-download"></i>
+                  </span>oakink_image_v2.zip</a> <i style="color:gray;">(10G)</i></li>
+              <li><a href="https://www.dropbox.com/s/ss8e9f8mal1gy40/oakink_image_v2.z01?dl=0" target="_blank"><span
+                    class="icon"> <i class="fas fa-download"></i>
+                  </span>oakink_image_v2.z01</a> <i style="color:gray;">(10G)</i></li>
+              <li><a href="https://www.dropbox.com/s/otfr6lwanwo4bdj/oakink_image_v2.z02?dl=0" target="_blank"><span
+                    class="icon"> <i class="fas fa-download"></i>
+                  </span>oakink_image_v2.z02</a> <i style="color:gray;">(10G)</i></li>
+              <li><a href="https://www.dropbox.com/s/6oywsqhr59adc43/oakink_image_v2.z03?dl=0" target="_blank"><span
+                    class="icon"> <i class="fas fa-download"></i>
+                  </span>oakink_image_v2.z03</a> <i style="color:gray;">(10G)</i></li>
+              <li><a href="https://www.dropbox.com/s/58yuihk9ajmejql/oakink_image_v2.z04?dl=0" target="_blank"><span
+                    class="icon"> <i class="fas fa-download"></i>
+                  </span>oakink_image_v2.z04</a> <i style="color:gray;">(10G)</i></li>
+              <li><a href="https://www.dropbox.com/s/l3wtowitj37lqqf/oakink_image_v2.z05?dl=0" target="_blank"><span
+                    class="icon"> <i class="fas fa-download"></i>
+                  </span>oakink_image_v2.z05</a> <i style="color:gray;">(10G)</i></li>
+              <li><a href="https://www.dropbox.com/s/x6kxd4g59gkv30r/oakink_image_v2.z06?dl=0" target="_blank"><span
+                    class="icon"> <i class="fas fa-download"></i>
+                  </span>oakink_image_v2.z06</a> <i style="color:gray;">(10G)</i></li>
+              <li><a href="https://www.dropbox.com/s/zz2bt9dk0vwyi5e/oakink_image_v2.z07?dl=0" target="_blank"><span
+                    class="icon"> <i class="fas fa-download"></i>
+                  </span>oakink_image_v2.z07</a> <i style="color:gray;">(10G)</i></li>
+              <li><a href="https://www.dropbox.com/s/iew1j79hd1lrwgv/oakink_image_v2.z08?dl=0" target="_blank"><span
+                    class="icon"> <i class="fas fa-download"></i>
+                  </span>oakink_image_v2.z08</a> <i style="color:gray;">(10G)</i></li>
+              <li><a href="https://www.dropbox.com/s/gfoqwgw8pyxlms6/oakink_image_v2.z09?dl=0" target="_blank"><span
+                    class="icon"> <i class="fas fa-download"></i>
+                  </span>oakink_image_v2.z09</a> <i style="color:gray;">(10G)</i></li>
+              <li><a href="https://www.dropbox.com/s/2w46ywjcbh7a8kd/oakink_image_v2.z10?dl=0" target="_blank"><span
+                    class="icon"> <i class="fas fa-download"></i>
+                  </span>oakink_image_v2.z10</a> <i style="color:gray;">(10G)</i></li>
+            </ul>
+            <li> The object models used in OakInk-image: <a
+                href="https://www.dropbox.com/s/26lplakbvi51sfw/obj.zip?dl=0" target="_blank"><span class="icon">
+                  <i class="fas fa-download"></i>
+                </span>obj.zip</a> <i style="color:gray;">(7.2M) </i>
+            </li>
+            </li>
+            <li> Hand & object pose annotations for OakInk-image <a href="https://forms.gle/g6QEmmCeZYLGaVe29"
+                target="_blank"><span class="icon"> <i class="fas fa-download"></i>
+                </span>anno_v2.1.zip</a> <i style="color:gray;">(3.6G) </i>
+            </li>
+          </ul>
+          <p>
+            To ensure latest version, please use <b>sha256sum</b> to calculate the checksum of the
+            <a>anno_v2.1.zip</a>. You will get:
+          </p>
+          <div class="text-center">
+            <code>dc64402d65cff3c1e2dd40fb560fcc81e3757e1936f44d353c381874489d71ea</code>
+          </div>
+        </div>
+        <br />
+        <div class="text-justify">
+          <h3><b>OakInk-Shape</b> -- Geometry-based subset</h3>
+          <ul>
+            <li>Meta files for managing object' attributes: <a
+                href="https://www.dropbox.com/s/uh7o95lx0qbp05r/metaV2.zip?dl=0" target="_blank"><span class="icon">
+                  <i class="fas fa-download"></i>
+                </span>metaV2.zip</a></i>
+            </li>
+            <li>All interacting hand parameters (pose, shape, root) in <span class="font-weight-bold">ink</span>
+              base: <a href="https://www.dropbox.com/s/swqintyk2g64bed/oakink_shape_v2.zip?dl=0" target="_blank"><span
+                  class="icon"> <i class="fas fa-download"></i>
+                </span>oakink_shape_v2.zip</a> <i style="color:gray;">(46M)</i>
+            </li>
+            <li>All the <i>real</i> object models <span class="font-weight-bold">oak</span> base: <a
+                href="https://www.dropbox.com/s/sq38cjn4finrt2q/OakInkObjectsV2.zip?dl=0" target="_blank"><span
+                  class="icon"> <i class="fas fa-download"></i>
+                </span>OakInkObjectsV2.zip</a> <i style="color:gray;">(1G)</i>
+            </li>
+            <li>All the <i>virtual</i> object models <span class="font-weight-bold">oak</span> base: <a
+                href="https://www.dropbox.com/s/1zgy6zjk33s5q6y/OakInkVirtualObjectsV2.zip?dl=0" target="_blank"><span
+                  class="icon"> <i class="fas fa-download"></i>
+                </span>OakInkVirtualObjectsV2.zip</a> <i style="color:gray;">(1G)</i>
+            </li>
+          </ul>
+        </div>
+        After downloading all the above <tt>.zip</tt> files, you need to arrange them in the following structure:
+        <div class="language-plaintext highlighter-rouge">
+          <div class="highlight text-left">
+            <pre class="highlight small"><code> $OAKINK_DIR
+    ├── image
+    │   ├── anno_v2.1.zip
+    │   ├── obj.zip
+    │   └── stream_zipped
+    │       ├── oakink_image_v2.z01
+    │       ├── ...
+    │       ├── oakink_image_v2.z10
+    │       └── oakink_image_v2.zip
+    └── shape
+        ├── metaV2.zip
+        ├── OakInkObjectsV2.zip
+        ├── oakink_shape_v2.zip
+        └── OakInkVirtualObjectsV2.zip</code>
+      </pre>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h2>Prepare</h2>
+
+        <p>
+          For the <code>image/anno_v2.1.zip</code>, <code>image/obj.zip</code>, and <code>shape/*.zip</code>,
+          simply <i>unzip</i> it.
+        </p>
+
+        <p>
+          For the 11 split zip files in <code>image/stream_zipped/</code>, you need to <i>cd</i> into the
+          <code>image/</code> directory, run: <br>
+          <b><code>zip -F ./stream_zipped/oakink_image_v2.zip --out single-archive.zip</code></b> <br>
+          This will combine the split zip files into a single <code>.zip</code> file at
+          <code>image/single-archive.zip</code>.
+        </p>
+        <p>
+          Finally, <i>unzip</i> the combined archive, run: <br>
+          <b><code>unzip single-archive.zip</code></b>
+
+        </p>
+        After all the extractions are finished, you will have a your <code>OAKINK_DIR</code> as the following structure:
+        <div class="language-plaintext highlighter-rouge">
+          <div class="highlight text-left">
+            <pre class="highlight small"><code> $OAKINK_DIR
+    .
+    ├── image
+    │   ├── anno
+    │   ├── obj
+    │   └── stream_release_v2
+    │       ├── A01001_0001_0000
+    │       ├── A01001_0001_0001
+    │       ├── A01001_0001_0002
+    │       ├── ....
+    │
+    └── shape
+        ├── metaV2
+        ├── OakInkObjectsV2
+        ├── oakink_shape_v2
+        └── OakInkVirtualObjectsV2</code>
+      </pre>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <br>
+
+    <!--Datasheet and Explanation-->
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h2>Datasheet & Explanation</h2>
+
+        <!-- OakInk-Image datasheet -->
+        <div>
+          <h3> <b>OakInk-Image</b> -- Image-based subset</h3>
+          <h4>Dataset Structure </h4>
+          <ul>
+            <li>
+              <b>Image Sequence</b>: with resolution (<font color="red">848x480</font>).
+            </li>
+            <li>
+              <b>Annotation</b>: 2D/3D positions for 21 keypoints of the
+              hand; MANO's pose & shape parameters; MANO's vertex 3D locations;
+              object's vertex 3D locations; object's <tt>.obj</tt> models,
+              camera calibration (intrinsics & extrinsics); subject ID; intent ID; data split files (train/val/test).
+            </li>
+            <li>
+              <b>Visualization Code</b>: <a
+                href="https://github.com/lixiny/OakInk/blob/main/scripts/viz_oakink_image.py">viz_oakink_image.py</a>
+            </li>
+          </ul>
+
+          <br />
+
+          <p>
+            <strong>OakInk-Image</strong>
+            provides data splits for two categories of tasks: <b>Hand Mesh Recovery</b> and <b>Hand-Object Pose
+              Estimation</b>. The dataset contains in total 314,404 frames if no filtering is applied, in which 157,600
+            frames are from two-hand sequences. For single view tasks, we filter out frames that have less than 50% of
+            joints falling in the bounds of the images. Note these frames might still be useful in multiview tasks.
+            Refer to <a href="https://github.com/lixiny/OakInk/blob/main/oikit/oi_image/oi_image.py">oikit repo</a> for
+            the usage of these split files.
+          </p>
+
+          <br />
+
+          <!-- hmr -->
+          <h4>Splits for <b>Hand Mesh Recovery</b></h4>
+
+          <p>
+            For <b>Hand Mesh Recovery</b> task, we offer <b>three</b> different split modes. The details of each split
+            modes are described as below.
+          </p>
+
+          <!-- SP0 -->
+          <h5> <b><tt>SP0</tt></b>. Default split (split by views) </b> </h5>
+          <p>
+            We randomly select one view per sequence and mark all images from this view as the <tt>test</tt> sequence,
+            while the rest three views form the <tt>train/val</tt> sequences.
+          </p>
+          <div class="language-plaintext highlighter-rouge">
+            <div class="highlight text-left">
+              <pre class="highlight small"><code>Train+Val set
+* Train+Val: 232,049 frames; in which 114,697 frames are from two-hand sequences.
+
+Test set
+* Test: 77,330 frames; in which 38,228 frames are from two-hand sequences.</code></pre>
+            </div>
+          </div>
+          <p>
+            We also provide an example <tt>train/val</tt> split on the <tt>train+val</tt> set. The <tt>val</tt> set is
+            randomly sampled from the <tt>train+val</tt> set.
+          </p>
+          <div class="language-plaintext highlighter-rouge">
+            <div class="highlight text-left">
+              <pre class="highlight small"><code>Train set
+* Train: 216,579 frames; in which 107,043 frames are from two-hand sequences.
+
+Val set
+* Val: 15,470 frames; in which 7,654 frames are from two-hand sequences.</code></pre>
+            </div>
+          </div>
+
+          <br />
+
+          <!-- SP1 -->
+          <h5> <b><tt>SP1</tt></b>. Subject split (split by subjects) </b> </h5>
+          <p>
+            We select five subjects and mark all images containing these subjects as the <tt>test</tt> sequence,
+            while the images not containing these subjects form the <tt>train/val</tt> sequences. Note some sequences
+            involving two-hand interactions between subjects in test set and subjects in <tt>train/val</tt> set are
+            dropped.
+          </p>
+          <div class="language-plaintext highlighter-rouge">
+            <div class="highlight text-left">
+              <pre class="highlight small"><code>Train+Val set
+* Train+Val: 192,532 frames; in which 82,539 frames are from two-hand sequences.
+
+Test set
+* Test: 83,503 frames; in which 37,042 frames are from two-hand sequences.</code></pre>
+            </div>
+          </div>
+          <p>
+            We also provide an example <tt>train/val</tt> split on the <tt>train+val</tt> set. We select one subject to
+            form the <tt>val</tt> set, and the remaining subjects form the <tt>train</tt> set. Similar as the split of
+            the <tt>test</tt> set, sequences having overlapped subjects are dropped.
+          </p>
+          <div class="language-plaintext highlighter-rouge">
+            <div class="highlight text-left">
+              <pre class="highlight small"><code>Train set
+* Train: 177,490 frames; in which 73,658 frames are from two-hand sequences.
+
+Val set
+* Val: 6,151 frames. No frames from two-hand sequences as one subject is included.</code></pre>
+            </div>
+          </div>
+
+          <br />
+
+          <!-- SP2 -->
+          <h5> <b><tt>SP2</tt></b>. Object split (split by objects) </b> </h5>
+          <p>
+            We randomly select 25 objects (out of total 100 objects) and mark all sequences that contain these objects
+            as the <tt>test</tt> sequences,
+            while the sequences that contain the rest 75 objects form the <tt>train/val</tt> sequences.
+          </p>
+          <div class="language-plaintext highlighter-rouge">
+            <div class="highlight text-left">
+              <pre class="highlight small"><code>Train+Val set
+* Train+Val: 230,832 frames; in which 116,501 frames are from two-hand sequences.
+
+Test set
+* Test: 78,547 frames; in which 36,424 frames are from two-hand sequences.</code></pre>
+            </div>
+          </div>
+          <p>
+            We also provide an example <tt>train/val</tt> split on the <tt>train+val</tt> set. We randomly select 5
+            objects (out of 75 objects) to form the <tt>val</tt> set and the rest objects form the <tt>train</tt> set.
+          </p>
+          <div class="language-plaintext highlighter-rouge">
+            <div class="highlight text-left">
+              <pre class="highlight small"><code>Train set
+* Train: 214,630 frames; in which 107,767 frames are from two-hand sequences.
+
+Val set
+* Val: 16,202 frames; in which 8,734 frames are from two-hand sequences.</code></pre>
+            </div>
+          </div>
+
+          <br />
+          <!-- hope -->
+          <h4>Splits for <b>Hand-Object Pose Estimation</b></h4>
+
+          <p>
+            For <b>Hand-Object Pose Estimation</b> task, we offer <b>one</b> split mode based on views. The details of
+            the split mode is described as below.
+          </p>
+
+          <!-- SP0(HO) -->
+          <h5> <b><tt>SP0</tt></b>. Default split (split by views) </b> </h5>
+          <p>
+            We randomly select one view per sequence and mark all images from this view as the <tt>test</tt> sequence,
+            while the rest three views form the <tt>train/val</tt> sequences. We filter out frames that the min distance
+            between hand and object surface vertices are greater than 5 mm.
+          </p>
+          <div class="language-plaintext highlighter-rouge">
+            <div class="highlight text-left">
+              <pre class="highlight small"><code>Train+Val set
+* Train+Val: 145,589 frames; in which 61,256 frames are from two-hand sequences.
+
+Test set
+* Test: 48,538 frames; in which 20,413 frames are from two-hand sequences.</code></pre>
+            </div>
+          </div>
+          <p>
+            We also provide an example <tt>train/val</tt> split on the <tt>train+val</tt> set. The <tt>val</tt> set is
+            randomly sampled from the <tt>train+val</tt> set.
+          </p>
+          <div class="language-plaintext highlighter-rouge">
+            <div class="highlight text-left">
+              <pre class="highlight small"><code>Train set
+* Train: 135,883 frames; in which 57,161 frames are from two-hand sequences.
+
+Val set
+* Val: 9,706 frames; in which 4,095 frames are from two-hand sequences.</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <br /><br />
+        <div>
+          <h3> <b>OakInk-Shape</b> -- Geometry-based subset</h3>
+          <h4>Dataset Structure </h4>
+          <ul>
+            <li>
+              <b>Annotation</b>: Object's <tt>.obj</tt> models in its canonical system;
+              MANO's pose & shape parameters and vertex 3D locations in object's canonical system;
+              subject ID; intent ID; origin sequence ID; Alternative hand pose, shape, and vertex (if any, for hand-over
+              pair).
+            </li>
+            <li>
+              <b>Visualization Code</b>: <a
+                href="https://github.com/lixiny/OakInk/blob/main/scripts/viz_oakink_shape.py">viz_oakink_shape.py</a>
+            </li>
+          </ul>
+
+        </div>
+
+        <br />
+        <p>
+          <strong>OakInk-Shape</strong>
+          provides data split for tasks of <b>Grasp Generation</b>, <b>Intent-based Interaction Generation</b>, and
+          <b>Handover Generation</b>.
+          These three tasks share one data split. Details as below.
+        </p>
+
+        <br />
+
+        <!-- hmr -->
+        <h4>Split for <b>Grasp Generation</b></h4>
+
+        <!-- SP0 -->
+        <p>
+          We use the remainder of <tt>int</tt>(object ID's hash code) mod 10 as the split separator:
+        <ul>
+          <li>
+            obj_id_hash % 10 < 8 in <tt><b>train</b></tt> split
+          </li>
+          <li>
+            obj_id_hash % 10 == 8 in <tt><b>val</b></tt> split
+          </li>
+          <li>
+            obj_id_hash % 10 == 9 in <tt><b>test</b></tt> split
+          </li>
+        </ul>
+
+        </p>
+        <div class="language-plaintext highlighter-rouge">
+          <div class="highlight text-left">
+            <pre
+              class="highlight small"><code>* Train set
+1,308 objects with 49,302 grasping hand poses. 
+Including 5 intents: 11,804 use, 9,165 hold, 9,425 lift-up, 9,454 hand-out, and 9,454 receive.
+
+* Val set
+166 objects with 6,522 grasping hand poses. 
+Including 1,561 use, 1,239 hold, 1,278 lift-up, 1,222 hand-out, and 1,222 receive.
+
+* Test set
+183 objects with 6,222 grasping hand poses. 
+Including 1,473 use, 1,115 hold, 1,122 lift-up, 1,256 hand-out, and 1,256 receive.
+
+* Total set
+We release 1,801 object CAD models, of which 1,657 models have corresponding grasping hand poses. The total number of grasping poses is 62,046</code></pre>
+          </div>
+        </div>
+
+        <br />
+        <h2>Considerations for Using the Data </h2>
+        <ul>
+          <li>
+            <b>Licensing Information</b>: Codes are MIT license. Dataset is CC BY-NC-ND 4.0 license.
+          </li>
+          <li>
+            <b>IRB approval</b>: The third-party crowd-sourcing company warrants appropriate IRB approval
+            (or equivalent, based on local government requirements) are obtained.
+          </li>
+          <li>
+            <b>Portrait Usage</b>: All the subjects involved in data collection are required to sign a contract with the
+            third-party crowd-sourcing company,
+            involving permission on the portrait usage, the acknowledgment of data usage, and payment policy. We
+            desensitized all samples in the dataset by
+            blurring the subjects’ faces (if any), tattoos, rings, or any other accessories that may be offensive or
+            reveal the subjects’ identity.
+          </li>
+        </ul>
+
+
+        <h2>Maintenance</h2>
+        <ul>
+          <li>
+            <b>Dataset Curator</b>:
+            <a>Lixin Yang (siriusyang@sjtu.edu.cn)</a>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h2>Acknowledgements</h2>
+        <div class="text-justify">
+          If you find our work useful in your research, please cite:
+          <div class="language-plaintext highlighter-rouge">
+            <div class="highlight text-left">
+              <pre class="highlight small"><code>@InProceedings{YangCVPR2022OakInk,
+    author = {Yang, Lixin and Li, Kailin and Zhan, Xinyu and Wu, Fei and Xu, Anran and Liu, Liu and Lu, Cewu},
+    title = {{OakInk}: A Large-Scale Knowledge Repository for Understanding Hand-Object Interaction},
+    booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    year = {2022},
+}
+              </code></pre>
+            </div>
+          </div>
+
+        </div>
+        <p class="text-justify">
+          <br />
+          The website template was borrowed from
+          <a href="http://mgharbi.com/">Michaël Gharbi</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>
