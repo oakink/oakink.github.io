@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="A Large-scale Knowledge Repository for Understanding Hand-Object Interaction">
+  <meta name="keywords" content="Hand-Object Interaction, Dataset">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OakInk Dataset CVPR2022 | 手物交互数据库</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="icon" type="image/png" href="img/oakink_icon.png">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://github.com/oakink/OakInk">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+        </a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Related Projects
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/oakink/OakInk-HMR">
+              OakInk-HMR
+            </a>
+            <a class="navbar-item" href="https://github.com/oakink/OakInk-Grasp-Generation">
+              OakInk-Grasp-Generation
+            </a>
+            <a class="navbar-item" href="https://github.com/oakink/OakInk">
+              Tink: Interaction Transfer
+            </a>
+            <a class="navbar-item" href="https://github.com/lixiny/POEM">
+              POEM: Multiview mesh recovery (CVPR23)
+            </a>
+            <a class="navbar-item" href="#">
+              CHORD: Category-level object recovery (ICCV23)
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="post-title">
+              <img class="left" src="img/oakinklogo.png" width="280px" height="auto" alt="OakInk_logo.png">
+            </h1><br />
+            <h1 class="title is-1 publication-title">OakInk: A Large-scale Knowledge Repository for Understanding
+              Hand-Object Interaction</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://lixiny.github.io">Lixin Yang</a><sup>1,2,&#10034</sup>,</span>
+              <span class="author-block">
+                <a href="https://kailinli.top/">Kailin Li</a><sup>1,&#10034</sup>,</span>
+              <span class="author-block">
+                <a href="https://jonbarron.info">Xinyu Zhan</a><sup>1,&#10034</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#">Fei Wu</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://anran-xu.github.io">Anran Xu</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=-_aPWUIAAAAJ&hl=en">Liu Liu</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="http://www.ricardomartinbrualla.com">Cewu Lu</a><sup>1,2,&#9742</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Shanghai Jiao Tong University,</span>
+              <span class="author-block"><sup>2</sup>Shanghai Qi Zhi Institute</span>
+            </div>
+
+            <sup>&#10034</sup> Equal contribution &nbsp;&nbsp; <sup>&#9742</sup> Corresponding author
+
+            <div style="font-size:30px; font-weight: bold;">
+              CVPR 2023
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://openaccess.thecvf.com/content/CVPR2022/html/Yang_OakInk_A_Large-Scale_Knowledge_Repository_for_Understanding_Hand-Object_Interaction_CVPR_2022_paper.html"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/oakink/OakInk" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2203.15709" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img id="teaser" src="img/teaser.png" class="img-responsive" alt="overview" width="100%" />
+        <h2 class="subtitle has-text-centered">
+          OakInk consists of 1) <strong>OakBase</strong> of object affordance and 2) <strong>InkBase</strong> of hand's
+          interaction.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="column is-full-width">
+        <h3 class="title is-3">Update</h3>
+        <ul>
+          <li>
+            <b><tt>Dec,11,2023</tt></b>: &nbsp <a href="https://github.com/oakink/OakInk-Grasp-Generation">
+              <strong>Grasp Generation
+              </strong></a> models on OakInk-Shape are released!
+          </li>
+          <li>
+            <b><tt>Feb,11,2023</tt></b>: &nbsp <b>OakBase</b> is released!
+          </li>
+
+          <li>
+            <b><tt>Jan,03,2023</tt></b>: &nbsp <a href="https://github.com/oakink/OakInk-HMR"> <strong>Hand
+                Mesh Recovery
+              </strong></a> models on OakInk-Image are released!
+          </li>
+
+          <li> <b><tt>Oct,18,2022</tt></b>: &nbsp OakInk <b>public v2.1</b> is released! <br />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <details>
+              <summary>expand to see details</summary>
+              Within this update, several artifacts have been fixed, including: wrong poses, time delay, and contact
+              surface mismatches;
+              <b>NOTE</b>:
+              If you downloaded the OakInk dataset before <u>11:00 AM October 18, 2022, UTC</u>,
+              You <b>only</b> need to replace the previous anno.zip by this newly released: <a
+                href="https://forms.gle/g6QEmmCeZYLGaVe29" target="_blank"><span class="icon"> <i
+                    class="fas fa-download"></i>
+                </span>anno_v2.1.zip</a> <i style="color:gray;">(access via Google Forms)</i>,
+              unzip it and keep the same file structures as before, and install the latest
+              <a href="https://github.com/lixiny/OakInk"> <b>OakInk Toolkit</b></a>.
+            </details>
+          </li>
+          <li>
+            <b><tt>Jul,26,2022</tt></b>: &nbsp <a href="https://github.com/KailinLi/Tink"> <strong>Tink
+              </strong></a> has been made public.
+          </li>
+          <li>
+            <b><tt>Jun,28,2022</tt></b>: &nbsp OakInk <b>public v2</b> & <a href="https://github.com/lixiny/OakInk">
+              <b>OakInk Toolkit</b></a> -- a Python dataloader, are released!
+          </li>
+          <li>
+            <b><tt>Mar,03,2022</tt></b>: &nbsp OakInk
+            got accepted by <a href="https://cvpr2022.thecvf.com"><strong>CVPR 2022</strong></a>.
+          </li>
+        </ul>
+
+        <!-- 初始化 Foundation JS -->
+        <script>
+          $(document).ready(function () {
+            $(document).foundation();
+          })
+        </script>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class=" container is-max-desktop">
+      <h3 class="title is-3">About</h3>
+      <div class="content has-text-justified">
+        OakInk contains three datasets:<br />
+        <ul>
+          <li>
+            <b>OakBase</b>: Object Affordance Knowledge (Oak) base, including objects' part-level segmentation and
+            attributes.
+          </li>
+          <li>
+            <b>OakInk-Image</b>: a video dataset with 3D hand-object pose and shape annotations.
+          </li>
+          <li>
+            <b>OakInk-Shape</b>: a 3D grasping pose dataset with hand and object mesh models.
+          </li>
+        </ul>
+
+        The OakInk-Image contains 230K image frames that capture a total of 12 subjects performing
+        up to 5 intent-oriented interactions with 100 objects from 32 categories.
+        The object poses were captured from a MoCap system, while the MANO hand poses are fitted from 2D keypoint
+        annotation.
+        Based on the hand-object poses from real-world human demonstrations,
+        we transfer the hand pose on the real-world object to the virtual objects with similar affordances through a
+        interaction transfer module: Tink.
+
+        All the real-world and transferred interactions constitute the geometry-based dataset: OakInk-Shape.
+        The OakInk-Shape contains 50K different hand-object poses and models.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h3 class="title is-3">Download</h3>
+      <div class="content has-text-justified">
+        For researchers in China, you can download OakInk from the alternative mirror:
+        <a href="https://pan.baidu.com/s/1H2hW1ZXEbNccOUzYX9cPkA" target="_blank"><span class="icon"> <i
+              class="fas fa-download"></i>
+          </span>百度云盘</a> (<code>hrt9</code>)
+        <br>
+        After download all the files, you still need to complete the <a href="https://forms.gle/g6QEmmCeZYLGaVe29"
+          target="_blank"><span class="icon"> <i class="fas fa-file-alt"></i>
+          </span>Google Form</a> to get the annotation.
+      </div>
+
+
+      <div id="oakbase-div" class="content has-text-justified">
+        <h4 class="title is-4">OakBase</h4>
+        Object parts segmentation and attribute: <a
+          href="https://drive.google.com/file/d/1U5ynLB1ljWqy0fS1JgcC6XnHSf_swoOr/view?usp=sharing"
+          target="_blank"><span class="icon">
+            <i class="fas fa-download"></i>
+          </span>OakBase.zip</a> <i style="color:gray;">(4.07G)</i>
+      </div>
+
+      <div id="oiimage-div" class="content has-text-justified">
+        <h4 class="title is-4">OakInk-Image</h4>
+        Image sequences. We divided the image data into 11 parts (10G each). </br>
+        <ul>
+          <li><a href="https://drive.google.com/file/d/1F83G9sypq77uzjZTpNlJ-K6Qj6NeCm-9/view?usp=share_link"
+              target="_blank"><span class="icon"> <i class="fas fa-download"></i>
+              </span>oakink_image_v2.zip</a> <i style="color:gray;">(10G)</i></li>
+          <li><a href="https://drive.google.com/file/d/14x7FNBeVVoNN6RDOE6AVG12b3q62R3OT/view?usp=share_link"
+              target="_blank"><span class="icon"> <i class="fas fa-download"></i>
+              </span>oakink_image_v2.z01</a> <i style="color:gray;">(10G)</i></li>
+          <li><a href="https://drive.google.com/file/d/1lWqd4kPtX70qRSuUbfoe4bR1w1McRFoZ/view?usp=share_link"
+              target="_blank"><span class="icon"> <i class="fas fa-download"></i>
+              </span>oakink_image_v2.z02</a> <i style="color:gray;">(10G)</i></li>
+          <li><a href="https://drive.google.com/file/d/1R8L1S8UJDqno6VpE3bO4KY47j0AFb33Z/view?usp=share_link"
+              target="_blank"><span class="icon"> <i class="fas fa-download"></i>
+              </span>oakink_image_v2.z03</a> <i style="color:gray;">(10G)</i></li>
+          <li><a href="https://drive.google.com/file/d/1Gdj5s6Mpfm0pchPnx9lkezfev3EhFpVx/view?usp=share_link"
+              target="_blank"><span class="icon"> <i class="fas fa-download"></i>
+              </span>oakink_image_v2.z04</a> <i style="color:gray;">(10G)</i></li>
+          <li><a href="https://drive.google.com/file/d/1wvG0_t8XhTxOh58qvlfGQOFnn61oiUaz/view?usp=share_link"
+              target="_blank"><span class="icon"> <i class="fas fa-download"></i>
+              </span>oakink_image_v2.z05</a> <i style="color:gray;">(10G)</i></li>
+          <li><a href="https://drive.google.com/file/d/1cO2GJCd-346Hmfrml6IuY3RjiYTSzmce/view?usp=share_link"
+              target="_blank"><span class="icon"> <i class="fas fa-download"></i>
+              </span>oakink_image_v2.z06</a> <i style="color:gray;">(10G)</i></li>
+          <li><a href="https://drive.google.com/file/d/1qwA9VU5BR302goUaQfHjozyeGsGrFRkh/view?usp=share_link"
+              target="_blank"><span class="icon"> <i class="fas fa-download"></i>
+              </span>oakink_image_v2.z07</a> <i style="color:gray;">(10G)</i></li>
+          <li><a href="https://drive.google.com/file/d/14hNUz-dlo4m9narR1wSiHNQKiggHHZ37/view?usp=share_link"
+              target="_blank"><span class="icon"> <i class="fas fa-download"></i>
+              </span>oakink_image_v2.z08</a> <i style="color:gray;">(10G)</i></li>
+          <li><a href="https://drive.google.com/file/d/1U-B1wVpnzVW9MFp2vDBNfProgf6UeiIu/view?usp=share_link"
+              target="_blank"><span class="icon"> <i class="fas fa-download"></i>
+              </span>oakink_image_v2.z09</a> <i style="color:gray;">(10G)</i></li>
+          <li><a href="https://drive.google.com/file/d/1r4uSS8midWxwfSCrBG2njUn53wjbSZwz/view?usp=share_link"
+              target="_blank"><span class="icon"> <i class="fas fa-download"></i>
+              </span>oakink_image_v2.z10</a> <i style="color:gray;">(10G)</i>
+        </ul>
+        The object models used in OakInk-Image:<a
+          href="https://drive.google.com/file/d/15dUijHSs5lD4Lw2qhDe26ICsau7dPZaE/view?usp=share_link"
+          target="_blank"><span class="icon">
+            <i class="fas fa-download"></i>
+          </span>obj.zip</a> <i style="color:gray;">(7.2M) </i>
+        <br>
+        Hand & object pose annotations <a href="https://forms.gle/g6QEmmCeZYLGaVe29" target="_blank"><span class="icon">
+            <i class="fas fa-file-alt"></i>
+          </span>anno_v2.1.zip</a> <i style="color:gray;">(Access via Google Forms) </i>
+      </div>
+
+      <div id="oishape-div" class="content has-text-justified">
+        <h4 class="title is-4">OakInk-Shape</h4>
+        Meta files for organizing and indexing the objects: <a
+          href="https://drive.google.com/file/d/1d9znd31faLlUYjhrZ1eEHL3UlsgTaIli/view?usp=share_link"
+          target="_blank"><span class="icon">
+            <i class="fas fa-download"></i>
+          </span>metaV2.zip</a> <i style="color:gray;">(15K)</i>
+        <br>
+        Hand parameters (pose, shape, root transf): <a
+          href="https://drive.google.com/file/d/1nI9czISV46554RBb2u2vQySrRlHrBL42/view?usp=share_link"
+          target="_blank"><span class="icon"> <i class="fas fa-download"></i>
+          </span>oakink_shape_v2.zip</a> <i style="color:gray;">(46M)</i>
+        <br>
+        The <b>real</b> object models: <a
+          href="https://drive.google.com/file/d/1PTpfyz0CasYNL03nWnIS1TdKj7goGIty/view?usp=share_link"
+          target="_blank"><span class="icon"> <i class="fas fa-download"></i>
+          </span>OakInkObjectsV2.zip</a> <i style="color:gray;">(1G)</i>
+        <br>
+        The <b>virtual</b> object models: <a
+          href="https://drive.google.com/file/d/1LhTErO8Ja5jgSZf0u9_xBWo9weoZ00Kb/view?usp=share_link"
+          target="_blank"><span class="icon"> <i class="fas fa-download"></i>
+          </span>OakInkVirtualObjectsV2.zip</a> <i style="color:gray;">(1G)</i>
+      </div>
+      <br />
+      Arrange all zip files into the directory, eg.<code>$OAKINK_DIR/zipped</code> as follow
+      <br>
+      <pre><code>$OAKINK_DIR/zipped
+  ├── OakBase.zip
+  ├── image
+  │   ├── anno_v2.1.zip
+  │   ├── obj.zip
+  │   └── stream_zipped
+  │       ├── oakink_image_v2.z01
+  │       ├── ...
+  │       ├── oakink_image_v2.z10
+  │       └── oakink_image_v2.zip
+  └── shape
+      ├── metaV2.zip
+      ├── OakInkObjectsV2.zip
+      ├── oakink_shape_v2.zip
+      └── OakInkVirtualObjectsV2.zip</code></pre>
+      and follow the <a href="https://github.com/oakink/OakInk/blob/main/docs/datasets.md#download-full-oakink"
+        target="_blank"><span class="icon"> <i class="fab fa-github"></i>
+        </span>instruction</a> to verify checksums and unzip the files.
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop content">
+      <h3 class="title is-3">Resources</h3>
+      Details of dataset annotations, please refer to <a
+        href="https://github.com/oakink/OakInk/blob/main/docs/datasets.md#data-documentation" target="_blank"><span
+          class="icon"> <i class="fab fa-github"></i></span>Data documentation</a>.
+      <br>
+      Details of dataset splits for various tasks, please refer to <a
+        href="https://github.com/oakink/OakInk/blob/main/docs/datasets.md#data-splitting" target="_blank"><span
+          class="icon"> <i class="fab fa-github"></i></span>Data splitting</a>.
+      <br>
+      Load OakBase and visualize object parts and attributes, please refer to <a
+        href="https://github.com/oakink/OakInk/blob/main/scripts/demo_oak_base.py" target="_blank"><span class="icon">
+          <i class="fab fa-github"></i></span>demo_oak_base.py</a>.
+      <br>
+      Load OakInk-Image and OakInk-Shape for visualization, please refer to <a
+        href="https://github.com/oakink/OakInk#load-and-visualize" target="_blank"><span class="icon"> <i
+            class="fab fa-github"></i></span>Load and visualize</a>.
+      <br>
+      Train hand mesh recovery models on OakInk-Image, please refer to <a href="https://github.com/oakink/OakInk-HMR"
+        target="_blank"><span class="icon"> <i class="fab fa-github"></i></span>OakInk-HMR</a>.
+      <br>
+      Train grasp generation models on OakInk-Shape, please refer to <a
+        href="https://github.com/oakink/OakInk-Grasp-Generation" target="_blank"><span class="icon"> <i
+            class="fab fa-github"></i></span>OakInk-Grasp-Generation</a>.
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h3 class="title is-3">BibTeX</h3>
+      <pre><code>@InProceedings{YangCVPR2022OakInk,
+    author = {Yang, Lixin and Li, Kailin and Zhan, Xinyu and Wu, Fei and Xu, Anran and Liu, Liu and Lu, Cewu},
+    title = {{OakInk}: A Large-Scale Knowledge Repository for Understanding Hand-Object Interaction},
+    booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    year = {2022},
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <a class="icon-link" href="https://arxiv.org/abs/2203.15709">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+        <a class="icon-link" href="https://github.com/oakink/OakInk" class="external-link" disabled>
+          <i class="fab fa-github"></i>
+        </a>
+        <br>
+        website template from <a href="https://github.com/nerfies/nerfies.github.io">nerfies</a>
+
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
